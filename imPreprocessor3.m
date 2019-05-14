@@ -1,20 +1,19 @@
-function im_out = imPreprocessor3(filename);
-%filename = 'bear.jpg';
-x = 'Dleaf'; % alexnet, vgg16,inceptionv3
+function im_out = imPreprocessor3(filename)
+
+x = 'dleaf'; % alexnet, vgg16,dleaf
 im_out = imread(filename);
-im=rgb2gray(im_out);
 
 switch x
 
     case 'alexnet'
-        im_out = imresize(im,[227,227]);
-        montage({im,im_out});
-
-    case 'vgg16'
-        im_out = imresize(im,[224,224]);
+        im_out = imresize(im_out,[227,227]);
         
-   case 'Dleaf'
-        im_out = imresize(im,[250,250]);
+    case 'vgg16'
+        im_out = imresize(im_out,[224,224]);
+        
+    case 'dleaf'
+        im_out = imresize(im_out,[169 169 ]);
+        im_out = rgb2gray(im_out);
 
 end
 
